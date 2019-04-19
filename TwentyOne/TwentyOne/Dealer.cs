@@ -16,7 +16,7 @@ namespace TwentyOne
         {
             Hand.Add(Deck.Cards.First()); //grab the first hard
             Console.WriteLine(Deck.Cards.First().ToString() + "\n"); // add to the hand that is passed into Deal
-
+            Deck.Cards.RemoveAt(0); 
         }
     }
 }
