@@ -12,15 +12,13 @@ namespace TwentyOne
         {
             Deck deck = new Deck(); // now it should have an entire deck of 52 cards
             int timesShuffled = 0;
-            deck = Shuffle(deck, out timesShuffled, 3); // named parameter 
-
+            deck.Shuffle(3);
   
             foreach (Card card in deck.Cards)
                 {
                 Console.WriteLine(card.Face + " of " + card.Suit);
                 }
             Console.WriteLine(deck.Cards.Count);
-            Console.WriteLine("Times shuffled {0}", timesShuffled);
             Console.ReadLine();  
         }
        
