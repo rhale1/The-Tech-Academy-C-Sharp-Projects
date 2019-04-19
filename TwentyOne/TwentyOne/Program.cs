@@ -10,13 +10,14 @@ namespace TwentyOne
     {
         static void Main(string[] args)
         {
-            Card cardOne = new Card();
-            //cardOne.Face = "Queen";
-            //cardOne.Suit = "Spades";
-            Console.WriteLine(cardOne.Face + " of " + cardOne.Suit);
-            Console.ReadLine();
-
-            
+            Deck deck = new Deck(); // now it should have an entire deck of 52 cards
+       
+            foreach (Card card in deck.Cards)
+                {
+                Console.WriteLine(card.Face + " of " + card.Suit);
+                }
+            Console.WriteLine(deck.Cards.Count);
+            Console.ReadLine();  
         }
     }
 }
