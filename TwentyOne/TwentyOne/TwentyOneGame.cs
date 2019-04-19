@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace TwentyOne
 {
-    class TwentyOneGame : Game // how you can inherit from another class 
+    class TwentyOneGame : Game 
     {
-        public void Play()
+        public override void Play()
         {
             throw new NotImplementedException();
-
         }
    
     }
