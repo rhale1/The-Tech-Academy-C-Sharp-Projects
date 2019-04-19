@@ -46,8 +46,7 @@ namespace TwentyOne
                 }
 
                Cards = TempList;
-            }
-           
+            }     
         }
 
     }
