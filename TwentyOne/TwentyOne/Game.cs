@@ -14,7 +14,7 @@ namespace TwentyOne
 
         public abstract void Play();
 
-        public void ListPlayers()
+        public virtual void ListPlayers()
         {
             foreach (string player in Players)
             {
