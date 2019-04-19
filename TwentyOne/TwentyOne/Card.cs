@@ -13,7 +13,6 @@ namespace TwentyOne
             Suit = "Spades";
             Face = "Two";
         }
-
        public string Face {get; set;}
        public string Suit {get; set;}
     }
