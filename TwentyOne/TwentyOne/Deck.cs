@@ -11,7 +11,16 @@ namespace TwentyOne
         public Deck()
         {
             Cards = new List<Card>(); // this is refering to the property of the class, why no data type or variable 
-            for (int i=0; i< 13)           
+            for (int i=0; i< 13; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Card card = new Card();
+                    card.Face = (Face)j;
+                    card.Suit = (Suit)i;
+                    Cards.Add(card);
+                }
+            }
         }
         public List<Card> Cards { get; set; } // class properties
 
