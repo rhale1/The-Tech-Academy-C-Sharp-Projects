@@ -8,8 +8,9 @@ namespace TwentyOne
 {
     public class Card
     {
-        public Face Face { get; set; }
         public Suit Suit { get; set; }
+        public Face Face { get; set; }
+        
     }
     public enum Suit
     {
