@@ -42,9 +42,30 @@ namespace TwentyOne
                     Dealer.Deal(player.Hand); //passing in the players hand and given a card and that card then given to the console
                     if (i == 1)
                     {
+                        bool blackJack = TwentyOneRules.CheckForBlackJack(player.Hand); // since this is a static method,  we have to prefance it with class name
+                        if (blackJack)
+                        {
+                            Console.WriteLine("Blackjack! {0} wins {1}", player.Name, Bets[player]);
+                            player.Balance += Convert.ToInt32((Bets[player] * 1.5 + Bets[player)); //give bet back plus the same amount if win 
+                            return;
+                        }
 
                     }
                 }
+                Console.Write("Dealer: ");
+                Dealer.Deal(Dealer.Hand); 
+                if (i == 1)
+                {
+                    bool blackJack = TwentyOneRules.CheckForBlackJack(Dealer.Hand);
+                    if (blackJack)
+                    {
+                        Console.WriteLine("Dealer has BlackJack! Everyone loses!");
+                        foreach(KeyValuePair<Player, int> entry in Bets)
+                        {
+                            Dealer.Balance += entry.Value; 
+                        }
+                    }
+                }  
             }
         }
 

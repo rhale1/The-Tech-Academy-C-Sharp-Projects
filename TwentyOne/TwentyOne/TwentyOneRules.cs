@@ -24,7 +24,7 @@ namespace TwentyOne
             [Face.King] = 10,
             [Face.Ace] = 1
         };
-        public static int[] GetAllPossibleHandValues(List<Card> Hand)
+         private static int[] GetAllPossibleHandValues(List<Card> Hand)
         {
             //lambada expressions are methods you can preform on lists
             int aceCount = Hand.Count(x => x.Face == Face.Ace);
@@ -41,12 +41,15 @@ namespace TwentyOne
                 value += (i * 10);
                 result[i] = value; 
             }
-
+            return result;
         }
 
         public static bool CheckForBlackJack(List<Card> Hand)
         {
-
-        }
+            int[] possibleValues = GetAllPossibleHandValues(Hand);
+            int value = possibleValues.Max();
+            if (value == 21) return true;
+            else return false;     
+         }
     }
 }
