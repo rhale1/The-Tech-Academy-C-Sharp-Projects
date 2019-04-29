@@ -22,6 +22,16 @@ namespace TwentyOne
             Dealer.Stay = false;
             Dealer.Deck = new Deck();
             Console.WriteLine("Place your bet!");
+
+        foreach (Player player in Players)
+            {
+                int bet = Convert.ToInt32(Console.ReadLine());
+                bool successfullyBet = player.Bet(bet); //pass in the amount they bet into the bet method
+                if (!successfullyBet) // if succfully bet is false same as succesfullybet ==false
+                {
+                    return; // not returning anything but means end this method and goes back to while loop (play method)
+                }
+            }
         }
 
         public override void ListPlayers()

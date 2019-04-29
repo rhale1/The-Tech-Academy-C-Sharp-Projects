@@ -20,6 +20,21 @@ namespace TwentyOne
         public string Name { get; set; }
         public bool isActivelyPlaying { get; set; }
         public bool Stay { get; set; }
+
+        public bool Bet(int amount)
+        {
+            if (Balance - amount < 0)
+            {
+                Console.WriteLine("You do not have enough to place a bet that size.");
+                return false;
+            }
+            else
+            {
+                Balance -= amount; 
+                return true;
+            }
+        }
+
         public static Game operator +(Game game, Player player)
         {
             game.Players.Add(player);
