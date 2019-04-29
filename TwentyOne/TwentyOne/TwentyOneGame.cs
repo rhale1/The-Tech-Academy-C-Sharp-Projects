@@ -99,8 +99,11 @@ namespace TwentyOne
                             answer = Console.ReadLine().ToLower();
                             if (answer == "yes" || answer == "yeah")
                             {
+                            
                                 player.isActivelyPlaying = true;
+                                return; 
                             }
+                            
                             else
                             {
                                 player.isActivelyPlaying = false;
