@@ -31,6 +31,16 @@ namespace TwentyOne
                 {
                     return; // not returning anything but means end this method and goes back to while loop (play method)
                 }
+                Bets[player] = bet; //Bets, which rep the dictionary with the player is the key, and the bet
+            }
+        for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine("Dealing...");
+               foreach (Player player in Player)
+                {
+                    Console.Write("{0}: ", player.Name);
+                    Dealer.Deal(player.Hand); //passing in the players hand and given a card and that card then given to the console
+                }
             }
         }
 
