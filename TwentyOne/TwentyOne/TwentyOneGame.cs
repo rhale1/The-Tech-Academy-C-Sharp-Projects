@@ -8,9 +8,20 @@ namespace TwentyOne
 {
     class TwentyOneGame : Game, IWalkAway
     {
-        public override void Play()
+        public TwentyOneDealer Dealer { get; set; }
+
+        public override void Play() // one hand one 21
         {
-            throw new NotImplementedException();
+            Dealer = new TwentyOneDealer(); //instantiate a new dealer
+            foreach (Player player in Players)
+            {
+                player.Hand = new List<Card>(); // new deck
+                player.Stay = false; 
+            }
+            Dealer.Hand = new List<Card>(); // new deck
+            Dealer.Stay = false;
+            Dealer.Deck = new Deck();
+            Console.WriteLine("Place your bet!");
         }
 
         public override void ListPlayers()
