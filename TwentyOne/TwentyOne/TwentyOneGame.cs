@@ -27,6 +27,7 @@ namespace TwentyOne
 
             foreach (Player player in Players)
             {
+
                 int bet = Convert.ToInt32(Console.ReadLine());
                 bool successfullyBet = player.Bet(bet); //pass in the amount they bet into the bet method
                 if (!successfullyBet) // if succfully bet is false same as succesfullybet ==false
