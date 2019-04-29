@@ -40,6 +40,10 @@ namespace TwentyOne
                 {
                     Console.Write("{0}: ", player.Name);
                     Dealer.Deal(player.Hand); //passing in the players hand and given a card and that card then given to the console
+                    if (i == 1)
+                    {
+
+                    }
                 }
             }
         }
