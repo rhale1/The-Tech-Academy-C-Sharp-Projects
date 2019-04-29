@@ -17,7 +17,7 @@ namespace TwentyOne
             Hand.Add(Deck.Cards.First()); //grab the first hard
             string card = string.Format(Deck.Cards.First().ToString() + "\n"); // add to the hand that is passed into Deal
             Console.WriteLine(card);
-            using (StreamWriter file = new StreamWriter(@"C:\Users\Student\Logs", true))
+            using (StreamWriter file = new StreamWriter(@"C:\Users\Student\Logs\Log.text", true))
             {
                 file.WriteLine(card);
             }
