@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace Casino
 {
     public class Player
-    { 
+    {
+        public Player(string name) : this(name,100) //assign name to name but if they dont provide a balance assign 100.
+        {
+            // don't need any implenmation.
+        }
         public Player(string name, int beginningBalance)
         {
             Hand = new List<Card>();
@@ -20,6 +24,8 @@ namespace Casino
         public string Name { get; set; }
         public bool isActivelyPlaying { get; set; }
         public bool Stay { get; set; }
+        public Guid Id { get; set; }
+
 
         public bool Bet(int amount)
         {

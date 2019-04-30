@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Casino.Interfaces;
+
 namespace Casino.TwentyOne
 {
   public class TwentyOneGame : Game, IWalkAway
