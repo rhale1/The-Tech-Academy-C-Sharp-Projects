@@ -2,6 +2,9 @@
 using Casino;
 using System.IO;
 using Casino.TwentyOne;
+using System.Data.SqlClient;
+using System.Data;
+
 namespace TwentyOne
  
 {
@@ -43,15 +46,17 @@ namespace TwentyOne
                     {
                         game.Play();
                     }
-                    catch (FraudException) // a more specific exception
+                    catch (FraudException ex) // a more specific exception
                     {
-                        Console.WriteLine("Security! Kick this person out.");
+                        Console.WriteLine(ex.Message);
+                        UpdateDbWithException(ex); //update database with exception details, so know if error occurs or if kick a person out
                         Console.ReadLine();
                         return;
                     }
-                    catch (Exception) //generic exception
+                    catch (Exception ex) //generic exception
                     {
                         Console.WriteLine("An error occurred. Please contact your System Administrator.");
+                        UpdateDbWithException(ex);
                         Console.ReadLine();
                         return;
                     }
@@ -61,6 +66,35 @@ namespace TwentyOne
             }
             Console.WriteLine("Feel free to  look around the casino. Bye for now");
             Console.ReadLine();
+        }
+        private static void UpdateDbWithException(Exception ex) // all exceptions inherit from exception
+        { //always need a connection string to connect with database
+
+            string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=TwentyOneGame;
+            Integrated Security=True;Connect Timeout=30;Encrypt=False;
+            TrustServerCertificate=False;ApplicationIntent=
+            ReadWrite;MultiSubnetFailover=False";
+            //parameterized queries
+            string queryString = @"INSERT INTO exceptions (ExceptionType, ExceptionMessage, TimeStamp) VALUES 
+                                (@ExceptionType, @ExceptionMessage, @TimeStamp)"; // these are just placeholders, helps with SQL injection
+
+            //using statements are a way of controling CLR, i.e we are dealing with external resources
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.Add("@ExceptionType", SqlDbType.VarChar); //this is the datatype inside table. by naming its datatype you are protecting against sql injection
+                command.Parameters.Add("@ExceptionMessage", SqlDbType.VarChar);
+                command.Parameters.Add("@TimeStamp", SqlDbType.DateTime);
+
+                command.Parameters["@ExceptionType"].Value = ex.GetType().ToString(); // get type returns a datatype type but now convert to string.
+                command.Parameters["@ExceptionMessage"].Value = ex.Message; // already a string
+                command.Parameters["@TimeStamp"].Value = DateTime.Now;
+
+                //now send to database...
+                connection.Open(); // opens connects
+                command.ExecuteNonQuery(); // its a nonquery becuase insert statement
+                connection.Close();
+            }
         }
     }
 }

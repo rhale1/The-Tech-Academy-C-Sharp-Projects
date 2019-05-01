@@ -37,7 +37,7 @@ namespace Casino.TwentyOne
                 }
                 if(bet < 0)
                 {
-                    throw new FraudException();
+                    throw new FraudException("Security! Kick this person out!");
                 }
                 bool successfullyBet = player.Bet(bet); //pass in the amount they bet into the bet method
                 if (!successfullyBet) // if succfully bet is false same as succesfullybet ==false
