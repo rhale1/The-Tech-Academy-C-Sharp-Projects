@@ -12,7 +12,11 @@ namespace Newsletter.Controllers
         {
             return View();
         }
-
+        [HttpPost]
+        public ActionResult SignUp(string FirstName, string LastName, string EmailAddress)
+        {
+            return null;
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
