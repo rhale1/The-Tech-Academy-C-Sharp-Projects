@@ -48,18 +48,12 @@ namespace Newsletter.Controllers
                 return View("Success");
             }
         }
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+      
 
+        public ActionResult Admin()
+        {
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
