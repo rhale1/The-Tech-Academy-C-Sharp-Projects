@@ -43,23 +43,5 @@ namespace Newsletter.Controllers
                 return View("Success");
             }
         }
-      
-        public ActionResult Admin()
-        {
-            using (NewsletterEntities db = new NewsletterEntities())
-            {
-                var signups = db.SignUps;
-                var signupVms = new List<SignupVm>();
-                foreach (var signup in signups)
-                {                   
-                    var signupVm = new SignupVm();
-                    signupVm.FirstName = signup.FirstName;
-                    signupVm.LastName = signup.LastName;
-                    signupVm.EmailAddress = signup.EmailAddress;
-                    signupVms.Add(signupVm);
-                }
-                return View(signupVms);
-            }      
-        }
     }
 }
