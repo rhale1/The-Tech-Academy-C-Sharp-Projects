@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Newsletter
+namespace Newsletter.Models
 {
     using System;
     using System.Collections.Generic;

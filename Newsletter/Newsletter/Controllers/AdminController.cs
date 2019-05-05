@@ -1,4 +1,5 @@
-﻿using Newsletter.ViewModels;
+﻿using Newsletter.Models;
+using Newsletter.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,16 @@ namespace Newsletter.Controllers
         {
             using (NewsletterEntities db = new NewsletterEntities())
             {
-                var signups = db.SignUps;
+                //var signups = db.SignUps.Where(x => x.Removed == null).ToList();
+                var signups = (from c in db.SignUps
+                               where c.Removed == null
+                               select c).ToList();
                 var signupVms = new List<SignupVm>();
                 foreach (var signup in signups)
                 {
                     var signupVm = new SignupVm();
+                    signupVm.Id = signup.Id; // pass to view model which is being passed to the view
+
                     signupVm.FirstName = signup.FirstName;
                     signupVm.LastName = signup.LastName;
                     signupVm.EmailAddress = signup.EmailAddress;
@@ -26,6 +32,16 @@ namespace Newsletter.Controllers
                 }
                 return View(signupVms);
             }
+        }
+        public ActionResult Unsubscribe(int Id)
+        {
+            using (NewsletterEntities db = new NewsletterEntities())
+            {
+                var signup = db.SignUps.Find(Id);
+                signup.Removed = DateTime.Now;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }
