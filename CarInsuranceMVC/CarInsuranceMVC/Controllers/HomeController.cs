@@ -29,27 +29,26 @@ namespace CarInsuranceMVC.Controllers
             EstimatedQuote = quote.Tickets(EstimatedQuote, quote.Ticket);
             //dui method update EstimatedQuote
             EstimatedQuote = quote.YesDui(EstimatedQuote, quote.Dui);
-
             //instantiate entitiy object and pass in connection string to access to db
             using (CarInsurance1Entities db = new CarInsurance1Entities())
             {
-                var user = new User(); // create new object 
-                //pass db values passed to model from UI
-                user.FirstName = quote.FirstName;
-                user.LastName = quote.LastName;
-                user.EmailAddress = quote.EmailAddress;
-                user.Birthday = quote.Birthday;
-                user.CarYear = quote.CarYear;
-                user.CarMake = quote.CarMake;
-                user.CarModel = quote.CarModel;
-                user.Dui = quote.Dui;
-                user.Ticket = quote.Ticket;
-                user.Coverage = quote.Coverage;
-                user.EstimatedQuote = Convert.ToInt32(EstimatedQuote);
+                var user = new User
+                { //pass db values passed to model from UI
+                    FirstName = quote.FirstName,
+                    LastName = quote.LastName,
+                    EmailAddress = quote.EmailAddress,
+                    Birthday = quote.Birthday,
+                    CarYear = quote.CarYear,
+                    CarMake = quote.CarMake,
+                    CarModel = quote.CarModel,
+                    Dui = quote.Dui,
+                    Ticket = quote.Ticket,
+                    Coverage = quote.Coverage,
+                    EstimatedQuote = Convert.ToDecimal(EstimatedQuote)
+                }; 
                 db.Users.Add(user); // add to db        
                 db.SaveChanges();  //save to db
             }
-
             var getquoteVms = new List<GetQuoteVm>
             {
                 new GetQuoteVm {EstimatedQuote = EstimatedQuote}

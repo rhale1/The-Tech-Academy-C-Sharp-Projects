@@ -2,8 +2,6 @@
 using CarInsuranceMVC.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CarInsuranceMVC.Controllers
@@ -20,13 +18,14 @@ namespace CarInsuranceMVC.Controllers
                 var getquoteVms = new List<GetQuoteVm>(); // create new list of viewmodels
                  //map the viewmodels from the model to viewmodel then pass list to view
                 foreach (var user in users)
-                {  
-                    var getquoteVm = new GetQuoteVm();
-                    // map db object to view model
-                    getquoteVm.FirstName = user.FirstName;
-                    getquoteVm.LastName = user.LastName;
-                    getquoteVm.EmailAddress = user.EmailAddress;
-                   getquoteVm.EstimatedQuote= Convert.ToSingle(user.EstimatedQuote);
+                {
+                    var getquoteVm = new GetQuoteVm
+                    { // map db object to view model
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        EmailAddress = user.EmailAddress,
+                        EstimatedQuote = Convert.ToDouble(user.EstimatedQuote)
+                    };
                     getquoteVms.Add(getquoteVm);
                 }
                 return View(getquoteVms);

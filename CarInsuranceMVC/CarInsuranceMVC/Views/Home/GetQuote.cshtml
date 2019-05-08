@@ -1,10 +1,18 @@
 ﻿@using CarInsuranceMVC.ViewModels
 @model List<GetQuoteVm>
+<div class="jumbotron jumbotron-fluid m-2">
+    <div class="container">
+        <h1 class="display-4 text-center">Your Quote Estimate! </h1>
 
-@foreach (var x in Model)
-{
-    <div>Your Quote Estimate</div>
-    @x.EstimatedQuote;
-}
+        @foreach (var x in Model)
+        {
+          <h3 class="lead display-5  text-info text-center">
+               $ @x.EstimatedQuote
+          </h3>
+        }
+     </div>
+</div>
+
+
 
 
