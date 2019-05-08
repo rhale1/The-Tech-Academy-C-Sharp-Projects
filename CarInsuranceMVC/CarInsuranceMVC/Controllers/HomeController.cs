@@ -29,6 +29,9 @@ namespace CarInsuranceMVC.Controllers
             EstimatedQuote = quote.Tickets(EstimatedQuote, quote.Ticket);
             //dui method update EstimatedQuote
             EstimatedQuote = quote.YesDui(EstimatedQuote, quote.Dui);
+            //coverage method update EstimatedQuote
+            EstimatedQuote = quote.YesCoverage(EstimatedQuote, quote.Coverage);
+
             //instantiate entitiy object and pass in connection string to access to db
             using (CarInsurance1Entities db = new CarInsurance1Entities())
             {
