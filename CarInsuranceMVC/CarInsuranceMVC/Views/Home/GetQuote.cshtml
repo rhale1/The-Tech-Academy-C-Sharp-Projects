@@ -1,0 +1,10 @@
+﻿@using CarInsuranceMVC.ViewModels
+@model List<GetQuoteVm>
+
+@foreach (var x in Model)
+{
+    <div>Your Quote Estimate</div>
+    @x.EstimatedQuote
+}
+
+

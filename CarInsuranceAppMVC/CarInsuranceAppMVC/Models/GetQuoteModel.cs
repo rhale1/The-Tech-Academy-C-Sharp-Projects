@@ -8,20 +8,19 @@ namespace CarInsuranceAppMVC.Models
 {
     public class GetQuoteModel
     {
-
         public string FirstName { get; set; }
         [Required(ErrorMessage = "First Name is Required")]
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public DateTime Birthday { get; set; }
-        public int carYear { get; set; }
+        public int CarYear { get; set; }
         public string CarMake { get; set; }
         public string CarModel { get; set; }
         public string Dui { get; set; }
         public int Ticket { get; set; }
         public string Coverage { get; set; }
-
-        readonly double EstimatedQuote = 50;
+       
+        public double EstimatedQuote = 50;
         // returns new insurance quote based on user age 
         public double Age(int age)
         {
@@ -47,9 +46,9 @@ namespace CarInsuranceAppMVC.Models
             else return x;
         }
         // returns new insurance quote based on # of tickets
-        public double Tickets(double EstimatedQuote, int tickets)
+        public double Tickets(double EstimatedQuote, int ticket)
         {
-            return tickets == 0 ? EstimatedQuote : EstimatedQuote += tickets * 10;
+            return ticket == 0 ? EstimatedQuote : EstimatedQuote += ticket * 10;
         }
         // returns new insurance quote based on what checked in dui
         public double YesDui(double EstimatedQuote, string dui)
