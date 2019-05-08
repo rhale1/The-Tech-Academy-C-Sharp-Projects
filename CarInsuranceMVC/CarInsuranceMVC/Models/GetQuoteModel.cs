@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace CarInsuranceMVC.Models
     public class GetQuoteModel
     {
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "Please enter student name")]
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public DateTime Birthday { get; set; }

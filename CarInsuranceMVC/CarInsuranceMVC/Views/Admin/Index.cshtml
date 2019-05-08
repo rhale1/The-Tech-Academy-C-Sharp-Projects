@@ -1,0 +1,34 @@
+﻿@using CarInsuranceMVC.ViewModels
+@model List<GetQuoteVm>
+<div class="bg-info"></div>
+<div class="row no-gutters m-3">
+    <div class="card col-sm-12 col-md-10 col-1g-6 mx-auto shadow">
+        <div class="card-header text-center">
+            <h5 class="m-0">Sign-ups</h5>
+        </div>
+        <div class="card-body">
+            @foreach (var user in Model)
+            {
+  
+                {
+                   
+            <div class="row mb-2">
+                <div class="col-2">
+                    @user.FirstName
+                </div>
+                <div class="col-2">
+                    @user.LastName
+                </div>
+                <div class="col-2">
+                    @user.EmailAddress
+                </div>
+                <div class="col-2">
+                    @user.EstimatedQuote
+                </div>
+
+            </div>
+                }
+            }
+        </div>
+    </div>
+</div>
