@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>   
+   <head>
+      <title>KnockoutJS Simple Example</title>
+      <!-- This refers to the knockout library-->
+      <script src = "https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js" 
+         type = "text/javascript"></script> 
+      <style>
+      body {background-color: blue; text-align:center; color: black; font-family: Arial, Helvetica, sans-serif;}
+      </style>
+   </head>
+<body>
+   <!--The view-->
+   <form data-bind="submit: addItem">
+     <h1>Grocery List:</h1> 
+      <input data-bind="value: ToAdd, valueUpdate: 'afterkeydown'" />
+      <button type="submit" data-bind="enable: ToAdd().length">Add Item</button>
+      <h2>Food Items:</h2>
+      <select style="width: 300px; height: 400px" multiple="multiple" data-bind="options: items"> </select>
+  </form>
+
+  <script>
+  var GroceryViewModel = function(items) {
+   this.items = ko.observableArray(items);
+   this.ToAdd = ko.observable("");
+   this.addItem = function() {
+       if (this.ToAdd() != "") {
+           this.items.push(this.ToAdd()); // Adds the item. 
+           this.ToAdd(""); 
+       }
+   }
+};
+// Activates knockout.js
+ko.applyBindings(new GroceryViewModel([""]));
+</script>
+
+</body>
+</html>
